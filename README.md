@@ -1,4 +1,6 @@
 # Spina::Datetime
+**DISCLAIMER: THIS GEM IS IN EARLY DEVELOPMENT AND NOT NECESSARILY SUITABLE FOR USE YET.**
+
 [Spina CMS](https://spinacms.com) supports simple extension via rails engines. This adds the option
 to have date and datetime inputs on any page, rather than only in custom sections (e.g. the events 
 plugin from the tutorial).
@@ -27,7 +29,7 @@ also be used in custom structure parts, not just page parts.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'spina-datetime'
+gem 'spina-datetime', github: 'mattr/spina-datetime'
 ```
 
 And then execute:
