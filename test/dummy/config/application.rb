@@ -5,7 +5,7 @@ require 'carrierwave'
 require 'spina'
 
 Bundler.require(*Rails.groups)
-require "spina/datetime"
+require 'spina/datetime'
 
 module Dummy
   class Application < Rails::Application

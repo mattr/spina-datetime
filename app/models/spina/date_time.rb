@@ -2,20 +2,25 @@ module Spina
   # DateTime is an extension of the Spina::Date editor which supports time as
   # well. This is useful for things like `published_at` for blog posts etc.
   class DateTime < ::Spina::ApplicationRecord
-    self.set_table_name = 'spina_dates'
+    # Stores both date and datetime values in the same table; effectively,
+    # date just stores the value with midnight.
+    self.table_name = 'spina_dates'
 
+    # Separate fields for the form which are mapped to `content`.
     attr_accessor :date, :time
 
-    before_filter :set_content_from_attrs
-    after_find    :set_attrs_from_content
+    # Sets the content from the form fields.
+    before_save :set_content_from_attrs
+    # Sets the form fields from any existing content.
+    after_find  :set_attrs_from_content
 
     private
 
     def set_content_from_attrs
       years, months, days = @date.split('-')
       hours, minutes, mer = @time.split(/\:|\s/)
-      hours += 12 if mer.match(/pm/i)
-      self.content = DateTime.new(years, months, days, hours, minutes)
+      hours += 12 if mer =~ /pm/i
+      self.content = ::DateTime.new(years, months, days, hours, minutes)
     end
 
     def set_attrs_from_content

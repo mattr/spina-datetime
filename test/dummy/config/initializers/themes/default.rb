@@ -1,5 +1,4 @@
 ::Spina::Theme.register do |theme|
-
   theme.name = 'default'
   theme.title = 'Default Theme'
 
@@ -7,6 +6,14 @@
     name:           'text',
     title:          'Text',
     partable_type:  'Spina::Text'
+  }, {
+    name:           'date',
+    title:          'Date',
+    partable_type:  'Spina::Date'
+  }, {
+    name:           'datetime',
+    title:          'Date & Time',
+    partable_type:  'Spina::DateTime'
   }]
 
   theme.view_templates = [{
@@ -14,11 +21,11 @@
     title:      'Homepage',
     page_parts: ['text']
   }, {
-    name: 'show',
+    name:         'show',
     title:        'Default',
     description:  'A simple page',
     usage:        'Use for your content',
-    page_parts:   ['text']
+    page_parts:   %w[text date datetime]
   }]
 
   theme.custom_pages = [{
@@ -30,11 +37,10 @@
 
   theme.navigations = [{
     name: 'mobile',
-    label: 'Mobile'  
+    label: 'Mobile'
   }, {
     name: 'main',
     label: 'Main navigation',
     auto_add_pages: true
   }]
-
 end
