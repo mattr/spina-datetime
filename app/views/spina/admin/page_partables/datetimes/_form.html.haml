@@ -1,0 +1,6 @@
+.horizontal-form-label
+  = f.object.title
+.horizontal-form-content
+  = f.fields_for :page_partable, f.object.page_partable do |ff|
+    = ff.text_field :date, value: (f.object.date.strftime('%d-%m-%y') unless f.object.date.blank?), placeholder: "#{t 'spina.pages.page_part'} #{f.object.name.downcase}", class: 'datepicker'
+    = ff.time_field :time

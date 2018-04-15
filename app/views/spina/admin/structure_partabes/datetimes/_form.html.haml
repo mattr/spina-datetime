@@ -1,0 +1,6 @@
+.horizontal-form-label
+  = f.object.title
+.horizontal-form-content
+  = f.fields_for :structure_partable do |ff|
+    = ff.text_field :date, placeholder: f.object.title, class: 'datetime'
+    = ff.time_field :time
